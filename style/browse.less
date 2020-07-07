@@ -1,0 +1,89 @@
+div.browse {
+    div.bar {
+        display: none; 
+        
+        position: fixed;
+        left: 0px;
+        bottom: 0px;
+        
+        width: 100%;
+        height: @toolbar-height;
+        
+        border-top: 1px solid @color-red;
+        text-align:left;
+        
+        div {
+            float: left;
+            height: @toolbar-height;
+        }
+        
+        div.browsebtn {
+            width: @toolbar-height - ( @toolbar-height  / 5 );
+            //height: @toolbar-height;
+            background-color: @color-red;
+            padding: @toolbar-height/4;
+            .transition(background-color 0.2s);
+            
+            i {
+                color: white;
+            }
+            &:hover {
+                background-color: darken(@color-red, 15%);
+            }
+            &:active {
+                background-color: lighten(@color-red, 15%);
+            }
+        }
+        
+        div#info {
+            div#imgname, div#author {
+                float: none;
+                height: (@toolbar-height / 2) - 5px;
+                padding: (@toolbar-height / 2) / 3 - 3px;
+                margin-left: 60px;
+                
+                span.label {
+                    color: @color-red;
+                    font-weight: bold;
+                    background-color: lighten(@color-red, 35%);
+                }
+                span.value {
+                    color: lighten(@color-red, 5%);
+                    font-style: italic;
+                    font-weight: bold;
+                    text-shadow: 1px 1px 3px lighten(black, 35%);
+                    font-size: 15px;
+                    margin-left: 15px;
+                }
+            }
+        }
+        
+        div#leave {
+            float: right;
+            padding-top: (@toolbar-height / 3) - 8px;
+            padding-right: 26px;
+        }
+        
+        div#likes {
+            float: right;
+            margin-right: 60px;
+            
+            div.like, div.dislike {
+                padding: @toolbar-height/5;
+                padding-left: 25px;
+                padding-right: 5px;
+                color: lighten(@color-red, 15%);
+                cursor: pointer;
+                
+                &:hover {
+                    color: @color-red;
+                    .transition(color 0.3s);
+                }
+                &:active {
+                    color: darken(@color-red, 15%);
+                    .transition(color 0.1s);
+                }
+            }
+        }
+    }
+}

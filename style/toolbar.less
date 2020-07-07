@@ -1,0 +1,108 @@
+div.toolbar {
+    display: none;
+    
+    position: fixed;
+    left: 0px;
+    bottom: 0px;
+    
+    width: 100%;
+    height: @toolbar-height;
+    background-color: white;
+    
+    border-top: 1px solid @color-red;
+    text-align:left;
+    
+    div {
+        float: left;
+        height: @toolbar-height;
+    }
+    
+    div.menubtn {
+        width: @toolbar-height;
+        //height: @toolbar-height;
+        background-color: @color-red;
+        padding: @toolbar-height/5;
+        .transition(background-color 0.2s);
+        
+        i {
+            color: white;
+        }
+        &:hover {
+            background-color: darken(@color-red, 15%);
+        }
+        &:active {
+            background-color: lighten(@color-red, 15%);
+        }
+    }
+    
+    div.clpicker {
+        display: none;
+        
+        width: 380px;
+        height: 228px;
+        
+        position: fixed;
+        bottom: @toolbar-height;
+        left: 0;
+        
+        background-color: lighten(gray, 40%);
+        border-top: 4px solid @color-red;
+        
+        .left {
+            float: left;
+            width: 130px;
+            margin: 16px 0px 14px 16px;
+            
+            #currentColorPreview {
+                width: 130px;
+                height: 100px;
+                background-color: gray;
+                //float: left;
+            }
+            
+            input#currentColor {
+                margin-top: 10px;
+                margin-bottom: 10px;
+                width: 130px;
+            }
+            
+            button.btn-custom-red {
+                margin-left: 6px;
+            }
+        }
+        
+        #picker {
+            float: right;
+            margin: 16px 16px 16px 0px;
+        }
+    }
+    
+    div.colors {
+            span.minicolors-swatch {
+                display:none;
+            }
+            div.changeColor {
+                width:28px;
+                height: @toolbar-height;
+                background-color: darken(@color-red, 15%);
+                
+                padding-top: @toolbar-height - 16px;
+                padding-left:11px;
+                color: @color-red;
+                
+                .transition(background-color 0.2s);
+                &:hover  { background-color: darken(@color-red, 10%); }
+                &:active { background-color: darken(@color-red, 25%); }
+            }
+            
+            div.color {
+                width:28px;
+                height: @toolbar-height;
+                
+                &.selected {
+                    height: @toolbar-height - 0px;
+                    //border-top: 4px solid lighten(@color-red, 8%);
+                }
+            }
+    }
+}

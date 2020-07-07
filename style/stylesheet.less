@@ -1,0 +1,41 @@
+.preventSelection {
+-webkit-user-select: none;
+ -khtml-user-select: none;
+   -moz-user-select: none;
+    -ms-user-select: none;
+     -o-user-select: none;
+        user-select: none;
+}
+                
+@import "mixins.less";
+@import "variables.less";
+@import "intro.less";
+@import "mainmenu.less";
+@import "toolbar.less";
+@import "drawing.less";
+@import "settings.less";
+@import "browse.less";
+
+body {
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+::selection {
+	background-color: lighten(@color-red, 25%); /* Safari */
+	}
+::-moz-selection {
+	background-color: lighten(@color-red, 25%); /* Firefox */
+}
+
+.btn-custom-red {
+    .btn-pseudo-states(white, darken(@color-red, 10%), darken(@color-red, 15%));
+    /*
+    background-color: darken(@color-red, 10%);
+    border-color: darken(@color-red, 15%);
+    color: white;
+    .transition(background-color 0.3s);
+    
+    &:hover {
+        background-color: darken(@color-red, 10%);
+    }*/
+}

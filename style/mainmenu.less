@@ -1,0 +1,136 @@
+div.mainmenu {
+    margin-top: 15%;
+    width: 800px;
+    height: 300px;
+    border: 1px solid darken(#fff, 15%);
+    .border-radius(@menu-borderradius);
+    .box-sizing(content-box);
+    
+    .buttons, .content {
+        float:left;
+        display: inline;
+        height: 100%;
+    }
+    
+    .buttons {
+        .border-top-left-radius(@menu-borderradius);
+        .border-bottom-left-radius(@menu-borderradius);
+        
+        background-color: #fff;
+        width:199px;
+        
+        div.button {
+            .box-sizing(border-box);
+            height: 25%;
+            vertical-align: middle;
+            padding-top: 30px;
+            
+            &:hover {
+                .transition(background-color 0.4s);
+                background-color: lighten(@color-red, 0%);
+                cursor: pointer;
+                color: white;
+            }
+            
+            &:active {
+                .transition(background-color 0.1s);
+                background-color: darken(@color-red, 20%);
+            }
+            
+            &.top       { .border-top-left-radius(@menu-borderradius); }
+            &.bottom    { .border-bottom-left-radius(@menu-borderradius); }
+        }
+    }
+    .content {
+        .border-top-right-radius(@menu-borderradius);
+        .border-bottom-right-radius(@menu-borderradius);
+        
+        background-color: @color-red;
+        width:600px;
+        
+        #new, #load, #about {display: none;}
+        
+        #new, #load, #about {
+            height: 300px;
+            text-align:left;
+            padding-left: 40px;
+            padding-right: 40px;
+            overflow: auto;
+            
+            h1 {
+                font-size: 26px;
+                color: lighten(@color-red, 35%);
+            }
+            p {
+                color: lighten(@color-red, 35%);
+            }
+            div.form-group {
+                label.control-label {
+                    color: #fff;
+                }
+                input.form-control {
+                    .placeholder(darken(@color-red, 10%));
+                    .transition(background-color 0.4s);
+                    background-color: lighten(@color-red, 15%);
+                    border-color: lighten(@color-red, 30%);
+                    color: white;
+                    
+                    &:focus {
+                        .box-shadow(none);
+                        background-color: lighten(@color-red, 20%);
+                    }
+                }
+                span.input-group-addon {
+                    background-color: lighten(@color-red, 5%);
+                    color: white;
+                }
+            }
+        }
+        
+        #about {            
+            p {
+                text-align: justify;
+                
+                a {
+                    color: white;
+                    text-decoration: underline;
+                    
+                    &:hover {
+                        text-decoration: none;
+                    }
+                }
+            }
+        }
+        
+        #load {
+            #openFilesList {
+                div {
+                    width: 100%;
+                    height: 30px;
+                    border-radius: 4px;
+                    margin-bottom: 12px;
+                    .box-shadow(1px 1px 3px rgba(0,0,0,.15) inset);
+                    padding: 5px;
+                    padding-left: 15px;
+                    background-color: darken(@color-red, 8%);
+                    color: lighten(@color-red, 25%);
+                    cursor: pointer;
+                    
+                    i {
+                        margin-right: 20px;
+                    }
+                    &:hover {
+                        .transition(all 0.6s);
+                        background-color: darken(@color-red, 18%);
+                        color: lighten(@color-red, 15%);
+                    }
+                    &:active {
+                        .transition(all 0.1s);
+                        background-color: lighten(@color-red, 3%);
+                        color: lighten(@color-red, 25%);
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,92 @@
+div.settings {
+    display: none;
+    width:100%;
+    height:100%;
+    
+    background-color: white;
+    
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    
+    div.content {
+        float: left;
+        text-align: left;
+        margin-top: 10px;
+        padding-left: @settings-leftbar-height + 74px;
+        padding-right: 74px;
+        width: 100%;
+    }
+    
+    div.leftMenu {
+        position: fixed;
+        top: 0px;
+        left: 0px;
+        
+        width: @settings-leftbar-height;
+        height: 100%;
+        background-color: @color-red;
+        padding-top: 80px;
+        
+        div {
+            width: 100%;
+            height: 60px;
+            padding-top: 20px;
+            .box-sizing(border-box);
+            
+            font-size: 16px;
+            color: lighten(@color-red, 30%);
+            cursor: pointer;
+            
+            .transition(background-color 0.2s);
+            
+            &:hover {
+                background-color: lighten(@color-red, 4%);
+            }
+            &:active {
+                background-color: darken(@color-red, 20%);
+            }
+        }
+    }
+    
+    div.tab {
+        display: none;
+        position: relative;
+        top: 0; left: 0;
+        
+        &.display {
+            display: block;
+        }
+    }
+    
+    div.backBtn {
+        position: fixed;
+        bottom: 0px;
+        left: 0px;
+        
+        height: @toolbar-height;
+        width: 100%;
+        padding: @toolbar-height/5;
+        background-color: darken(@color-red, 15%);
+        .transition(background-color 0.2s);
+        
+        text-align: left;
+        cursor: pointer;
+        
+        i, div {
+            color: white;
+            float: left;
+        }
+        div {
+            font-size: 18px;
+            margin-left: 22px;
+            margin-top: 12px;
+        }
+        &:hover {
+            background-color: darken(@color-red, 25%);
+        }
+        &:active {
+            background-color: darken(@color-red, 40%);
+        }
+    }
+}

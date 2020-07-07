@@ -1,0 +1,361 @@
+<!doctype html>
+
+<html>
+    <head>
+        <title>Pixel Drawer</title>
+        
+        <!-- Meta Data -->
+        <meta charset="utf-8">
+        
+        <!-- Stylesheets -->    
+        <link rel='stylesheet' href='lib/bootstrap_glyphs/css/bootstrap-glyphicons.css' /> 
+        <link rel='stylesheet' href='lib/bootstrap/css/bootstrap.min.css' /> 
+        <link rel='stylesheet' href='lib/minicolors/jquery.minicolors.css' /> 
+        <link rel='stylesheet' href='lib/jqueryFarbtastic/farbtastic.css' /> 
+        <!--<link rel='stylesheet' href='lib/jScrollPane/style/jquery.jscrollpane.css' /> -->
+        <link rel="stylesheet/less" type="text/css" href="style/stylesheet.less" />
+        
+        <link href='http://fonts.googleapis.com/css?family=Frijole|Press+Start+2P|Doppio+One' rel='stylesheet' type='text/css'>
+        
+        <!-- Grab Font Awesome files from bootstrap cdn -->
+        <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+        
+        <!-- JS Scripts -->
+        <script src="lib/jquery/jquery-1.10.1.min.js"></script>
+        <script src="lib/bootstrap/js/bootstrap.min.js"></script>
+        <!--<script src="lib/jScrollPane/script/jquery.jscrollpane.min.js"></script>
+        <script src="lib/jScrollPane/script/jquery.mousewheel.js"></script>
+        <script src="lib/jScrollPane/script/jquery.mwheelIntent.js"></script>-->
+        <script src="lib/tinyScrollbar/tinyScrollbar.js"></script>
+        
+        <script src="js/lightendarkencolor.js"></script>
+        <script src="js/base64.js"></script>
+
+        <script src="lib/minicolors/jquery.minicolors.js"></script>
+        <script src="lib/jqueryFarbtastic/farbtastic.js"></script>
+        <script src="//localhost/frameworks/less.js/less-1.3.3.min.js"></script>
+        <script src="js/intro.js"></script>
+        <script src="js/mainmenu.js"></script>
+        <script src="js/about.js"></script>
+        <script src="js/browse.js"></script>
+        <script src="js/toolbar.js"></script>
+        <script src="js/colorpicker.js"></script>
+        <script src="js/drawing.js"></script>
+        <script src="js/settings.js"></script>
+        <script src="js/saveFile.js"></script>
+        <script src="js/publishFile.js"></script>
+        <script src="js/openFile.js"></script>
+        <script src="js/downloadFile.js"></script>
+    </head>
+
+    <body>
+        <center>
+            <div class="intro-logo">
+                <i class="icon-pencil"></i>
+                <div>Pixel drawer</div>
+            </div>
+            
+            <div class="intro-text">
+                <div class="by">a project by Lukas Bach</div>
+                <div class="tw">lukasbach.com</div>
+            </div>
+            
+            <div class="mainmenu" style="display:none">
+                <div class="buttons">
+                    <div class="button top" id="new">Create new Drawing</div>
+                    <div class="button" id="load">Load</div>
+                    <div class="button" id="browse">Browse Drawings</div>
+                    <div class="button bottom" id="about">About</div>
+                </div>
+                <div class="content">
+                    <div id="new">
+                        <form class="form-horizontal">
+                            
+                            <h1>Create new Drawing</h1>
+                            
+                            <div class="form-group">
+                                <label for="inputEmail" class="col-lg-2 control-label">Name</label>
+                                <div class="col-lg-9">
+                                    <input type="text" class="form-control" id="inputName">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputPassword" class="col-lg-2 control-label">Width</label>
+                                <div class="col-lg-9">
+                                    <input type="number" class="form-control" value="48" id="inputWidth">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputPassword" class="col-lg-2 control-label">Height</label>
+                                <div class="col-lg-9">
+                                    <input type="number" class="form-control" value="36" id="inputHeight"><br />
+                                    <a class="btn btn-custom-red" id="createBtn" href="#">Create</a>
+                                </div>
+                            </div>
+                        
+                        </form>                    
+                    </div>
+                    
+                    <div id="load">
+                        <h1>Open</h1>
+                        <div id="openFilesList"></div>
+                    </div>
+                    
+                    <div id="about">
+                        <h1>About pixel drawer</h1>
+                        <p>
+                            Hi, my name is Lukas Bach, and i am a german web developer. Pixel drawer is just
+                            a small project and attempt, to create an web-app. It is obviously not an actual drawing
+                            software, and the main reason I created it, was just because it was fun to do so.
+                        </p>
+                        <p>
+                            Pixel drawer is mainly based on HTML, CSS and lots and lots of JavaScript. I haven't
+                            been using JavaScript that much before, so I trained myself in that as this is probably one
+                            of the first projects of mine with such an excessive use of JavaScript. It also uses some
+                            of the newer features introduces with HTML5, such as the
+                            <a href="http://en.wikipedia.org/wiki/Web_storage" target="_blank">Web Storage</a>,
+                            where the JavaScript saves the images on the Computer.
+                        </p>
+                        <p>
+                            Only for publishing and for downloading images, the image data (an JavaScript
+                            object, which contains meta information to the drawing as well as an <!--associative--> array
+                            for the actual image) is transferred to the server and processed by PHP (converted
+                            to JSON before transfer). I have been using PHP often before, so I am pretty much
+                            used to it, although I only used it in the procedural way most of the time.
+                        </p>
+                        <!--<p>
+                            If you right click and go to the source code for this page, you'll see that the JavaScript
+                            and the CSS code have been minified and are not readable anymore. That is not to prevent
+                            you from browsing through the code, but for a better site performance and less loading
+                            time. If you want to see, what's behind pixel drawer and just browse the code, feel
+                            free to do so, the uncompiled <a href="http://lesscss.org/" target="_blank">LESS files</a>
+                            and source JavaScript files are available at <a href="">pixel drawers' GitHub repo</a>.
+                            Please note that I only uploaded the source for others to learn and peep trough the code,
+                            not to steal the project. This project is licensed under [LICENSE]
+                        </p>-->
+                        <!--<p>
+                            Also, if you've got any issues, problems or questions concerning pixel drawer, please
+                            post them on its <a href="">GitHub repo</a>.
+                        </p>-->
+                        <p>Feel free to try to create some images, you can submit them to the public gallery if you
+                            want. I hope you have fun!</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="artboard">
+                <table></table>
+            </div>
+            
+            <div class="toolbar">
+                <div class="menubtn"><i class="icon-cogs icon-3x"></i></div>
+                <div class="colors">
+                    <!--<span class="color-picker"></span>-->
+                    <div class="changeColor"><i class="icon-th-large"></i></div>
+                </div>
+                
+                <div class="clpicker">
+                    <div class="left">
+                        <div id="currentColorPreview"></div>
+                        <input id="currentColor"></input>
+                        <button class="btn btn-default">Abort</button>
+                        <button class="btn btn-custom-red use">Use</button>
+                    </div>
+                    <div id="picker"></div>
+                </div>
+            </div>
+            
+            <div class="settings" style="display:none">
+                <div class="leftMenu">
+                    <!--<div class="tabBtn" id="tabInfo"     data-tabid="#info">Info</div>-->
+                    <div class="tabBtn" id="tabSave"     data-tabid="#saveAs">Save</div>
+                    <div class="tabBtn" id="tabPublish"  data-tabid="#publish">Publish</div>
+                    <div class="tabBtn" id="tabDownload" data-tabid="#download">Download</div>
+                    <!--<div class="tabBtn" id="tabHelp"     data-tabid="#help">Help</div>-->
+                    <div id="close" data-toggle="modal"  data-target="#closeAsk">Close</div>
+                </div>
+                
+                <div class="content">
+                    <div class="tab display" id="info">
+                        <!--<h1>Info</h1>
+                        <hr />
+                        
+                        <a data-toggle="modal" href="#shortcutsInfo">Shortcuts</a>-->
+                    </div>
+                    
+                    <div class="tab" id="download">
+                        <h1>Download</h1>
+                        <hr />
+                        
+                        <!--Click <a href="#" id="downloadBtn">here</a> to download your drawing as an .png image.-->
+                        <div id="output">
+                            <i class="icon-spinner icon-spin icon-large"></i> PNG image file is getting prepared...
+                        </div>
+                     </div>
+                    
+                    <div class="tab" id="publish">
+                        <h1>Publish...</h1>
+                        <hr />
+                        
+                        
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <label for="inputSaveAs">Project name</label>
+                                <input type="text" class="form-control" id="inputSaveAs">
+                            </div>
+                            <div class="col-lg-6">
+                                <label for="inputAuthor">Author name</label>
+                                <input type="text" class="form-control" id="inputAuthor">
+                            </div>
+                        </div>
+                        
+                        <p class="help-block">
+                            When publishing your drawing, it will be saved at our servers so everybody
+                            can access it while browsing all drawings. Then you won't be able to edit
+                            it anymore, so if you want to temporarily save the drawing in order to continue
+                            working on it later, please save it by clicking "save" on the left.
+                        </p>
+                        <br />
+                            
+                        <button type="button" class="btn btn-custom-red" id="publishBtn">Publish</button>
+                        <span id="successNote" style="display:none;"></span>
+                    </div>
+                    
+                    
+                    <div class="tab" id="saveAs">
+                        <h1>Save as...</h1>
+                        <hr />
+                        
+                        <label for="inputSaveAs">Project name</label>
+                        <input type="text" class="form-control" id="inputSaveAs">
+                        <p class="help-block">
+                            The file will be saved on your computer in your
+                            <a href='http://en.wikipedia.org/wiki/Web_storage' target="_blank">Browser's Local Storage</a>
+                            and will therefore be only accessible by you from this computer. If you want to share the image,
+                            click on Publish on the left.
+                        </p>
+                        <br />
+                            
+                        <button type="button" class="btn btn-custom-red" id="saveBtn">Save</button>
+                        <span id="successNote" style="display:none;"></span>
+                    </div>
+                </div>
+                
+                <div class="backBtn">
+                    <i class="icon-cogs icon-3x"></i>
+                    <div>Back to the drawing</div>
+                </div>
+            </div>
+            
+            <!-- BROWSE DRAWINGS -->
+            <div class="browse">
+                <div class="browseartboard">
+                    <table></table>
+                </div>
+                
+                <div class="bar">
+                    <div class="browsebtn" onClick="showNewDrawing()"><i class="icon-chevron-right icon-3x"></i></div>
+                    
+                    <div id="info">
+                        <div id="imgname">
+                            <span class="label">Name:</span>
+                            <span class="value"></span>
+                        </div>
+                        
+                        <div id="author">
+                            <span class="label">Author:</span>
+                            <span class="value"></span>
+                        </div>
+                    </div>
+                    
+                    <!--<div id="likes">
+                        <div class="like"><i class="icon-thumbs-up icon-3x"></i></div>
+                        <div class="dislike"><i class="icon-thumbs-down icon-3x"></i></div>
+                    </div>-->
+                    
+                    <div id="leave">
+                        <button class="btn btn-custom-red">
+                            <i class="icon-double-angle-left"></i>
+                            <span>Leave</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </center>
+        
+        
+        <!-- Modals -->
+        <div class="modal fade" id="closeAsk">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                  <h4 class="modal-title">Do you really want to close?</h4>
+                </div>
+                <div class="modal-body">
+                  <p>All unsaved changes will be lost...</p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Abort</button>
+                  <button type="button" class="btn btn-custom-red" id="closeBtn">Close</button>
+                </div>
+              </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+          </div><!-- /.modal -->
+          
+        <div class="modal fade" id="shortcutsInfo">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                  <h4 class="modal-title">Keyboard shortcuts</h4>
+                </div>
+                <div class="modal-body">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <td>Key</td>
+                                <td>Action</td>
+                            </tr>
+                        </thead>
+                        
+                        <tbody>
+                            <tr>
+                                <td>1-9</td>
+                                <td>Switching to color in color palette</td>
+                            </tr>
+                            <tr>
+                                <td>q</td>
+                                <td>Previous color</td>
+                            </tr>
+                            <tr>
+                                <td>w</td>
+                                <td>Next color</td>
+                            </tr>
+                            <tr>
+                                <td>e</td>
+                                <td>Open color picker</td>
+                            </tr>
+                            <tr>
+                                <td>space</td>
+                                <td>Menu</td>
+                            </tr>
+                            <tr>
+                                <td>STRG + S</td>
+                                <td>Save by the current name</td>
+                            </tr>
+                            <tr>
+                                <td>F1</td>
+                                <td>Open help</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+              </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+          </div><!-- /.modal -->
+    </body>
+</html>
